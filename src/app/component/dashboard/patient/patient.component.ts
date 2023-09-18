@@ -21,6 +21,7 @@ export class PatientComponent implements OnInit {
   allDoctors : Doctor[] = [];
   displayedColumns: string[] = ['name', 'mobile', 'doctor', 'gender','action'];
   dataSource!: MatTableDataSource<Patient>;
+  isLoading: boolean = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -62,7 +63,7 @@ export class PatientComponent implements OnInit {
         data.patient_id = e.payload.doc.id;
         return data;
       })
-
+      this.isLoading = false;
       this.dataSource = new MatTableDataSource(this.allPatients);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

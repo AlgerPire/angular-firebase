@@ -20,6 +20,7 @@ import { AddPatientComponent } from './component/dashboard/patient/add-patient/a
 import { DeletePatientComponent } from './component/dashboard/patient/delete-patient/delete-patient.component';
 import { ViewPatientComponent } from './component/dashboard/patient/view-patient/view-patient.component';
 import { LoginComponent } from './component/auth/login/login.component';
+import { ReceiptComponent } from './component/dashboard/receipt/receipt.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoginComponent } from './component/auth/login/login.component';
     AddPatientComponent,
     DeletePatientComponent,
     ViewPatientComponent,
-    LoginComponent
+    LoginComponent,
+    ReceiptComponent
   ],
   imports: [
     BrowserModule,

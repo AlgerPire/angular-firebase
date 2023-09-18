@@ -4,7 +4,7 @@
     <div class="col-sm-6 col-md-4 mt-3">
       <mat-card class="add-doc text-center" (click) = "addPatient()">
         <mat-card-content>
-          Add Patient <br>
+         Shto Pacientë <br>
           <mat-icon>group_add</mat-icon>
         </mat-card-content>
       </mat-card>
@@ -12,13 +12,21 @@
   </div>
 
     <!-- Patient table -->
-    <h2 style="font-weight: 700;" class="mt-4" color="primary">Patient Information</h2>
+    <h2 style="font-weight: 700;" class="mt-4" color="primary">Informacion rreth Pacientëve</h2>
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. code logic" #input>
     </mat-form-field>
 
-    <div class="mat-elevation-z8">
+  <div class="text-center" *ngIf="isLoading">
+    <button class="btn btn-primary" type="button" disabled >
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      <span role="status"> Loading...</span>
+    </button>
+  </div>
+
+
+    <div class="mat-elevation-z8" *ngIf="!isLoading">
       <table mat-table [dataSource]="dataSource" matSort>
 
         <!-- Name Column -->
