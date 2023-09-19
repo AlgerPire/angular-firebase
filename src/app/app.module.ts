@@ -21,6 +21,8 @@ import { DeletePatientComponent } from './component/dashboard/patient/delete-pat
 import { ViewPatientComponent } from './component/dashboard/patient/view-patient/view-patient.component';
 import { LoginComponent } from './component/auth/login/login.component';
 import { ReceiptComponent } from './component/dashboard/receipt/receipt.component';
+import { ScheduleComponent } from './component/dashboard/schedule/schedule.component';
+import { VisitsComponent } from './component/dashboard/visits/visits.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ReceiptComponent } from './component/dashboard/receipt/receipt.componen
     DeletePatientComponent,
     ViewPatientComponent,
     LoginComponent,
-    ReceiptComponent
+    ReceiptComponent,
+    ScheduleComponent,
+    VisitsComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,8 @@ import { PatientComponent } from './component/dashboard/patient/patient.componen
 import { ViewPatientComponent } from './component/dashboard/patient/view-patient/view-patient.component';
 import { AuthguardGuard } from './shared/guard/authguard.guard';
 import {ReceiptComponent} from "./component/dashboard/receipt/receipt.component";
+import {ScheduleComponent} from "./component/dashboard/schedule/schedule.component";
+import {VisitsComponent} from "./component/dashboard/visits/visits.component";
 
 const routes: Routes = [
   {path : '', redirectTo : 'login', pathMatch : 'full'},
@@ -16,6 +18,8 @@ const routes: Routes = [
     {path : 'patient', component: PatientComponent},
     {path : 'doctor', component: DoctorComponent},
     {path : 'receipt', component: ReceiptComponent},
+    {path : 'schedule', component: ScheduleComponent},
+    {path : 'visits', component: VisitsComponent},
     {path : 'doctor/:id', component: ViewDoctorComponent},
     {path : 'patient/:id', component: ViewPatientComponent},
   ], canActivate: [AuthguardGuard]},

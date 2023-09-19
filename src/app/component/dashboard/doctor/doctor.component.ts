@@ -19,6 +19,7 @@ export class DoctorComponent implements OnInit {
   doctorsArr : any[] = [];
   displayedColumns: string[] = ['name', 'mobile', 'email', 'department', 'gender','action'];
   dataSource!: MatTableDataSource<Doctor>;
+  isLoading: boolean = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -38,8 +39,8 @@ export class DoctorComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      title : 'Register doctor',
-      buttonName : 'Register'
+      title : 'Regjistro Doktor',
+      buttonName : 'Regjistro'
     }
 
     const dialogRef = this.dialog.open(AddDoctorComponent, dialogConfig);
@@ -104,6 +105,7 @@ export class DoctorComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.doctorsArr);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.isLoading = false;
     })
   }
 

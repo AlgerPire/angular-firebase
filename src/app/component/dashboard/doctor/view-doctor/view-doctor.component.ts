@@ -19,6 +19,7 @@ export class ViewDoctorComponent implements OnInit {
   id !: any;
   doctorObj !: any;
   allPatients : Patient[] = [];
+  isLoading: boolean = true;
 
   displayedColumns: string[] = ['name', 'mobile', 'gender','prescription','action'];
   dataSource!: MatTableDataSource<Patient>;
@@ -44,7 +45,10 @@ export class ViewDoctorComponent implements OnInit {
   getDoctorById() {
     this.dataApi.getDoctorById(this.id).subscribe(res => {
       this.doctorObj = res;
-    })
+      console.log("doctor ", this.doctorObj.birthdate.seconds);
+      this.isLoading = false;
+    });
+
   }
 
   getAllPatientsForDoctor() {

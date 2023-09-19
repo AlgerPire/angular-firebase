@@ -1,25 +1,31 @@
-<h2 style="font-weight: 700;" class="m-3" color="primary">Doctor Information</h2>
-<mat-card class="m-3">
+<h2 style="font-weight: 700;" class="m-3 d-flex justify-content-center" color="primary">Informacion rreth Doktorit</h2>
+<div class="text-center" *ngIf="isLoading">
+  <button class="btn btn-primary" type="button" disabled >
+    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    <span role="status"> Loading...</span>
+  </button>
+</div>
+<mat-card class="m-3" *ngIf="!isLoading">
   <mat-card-title>
     {{doctorObj?.name}}
   </mat-card-title>
   <mat-card-subtitle>
-    {{doctorObj?.qualification}}
+    Kualifikimi: <b>{{doctorObj?.qualification}}</b>
   </mat-card-subtitle>
   <mat-divider></mat-divider>
 
     <div class="row pt-3">
       <div class="col-md-6">
         <mat-card-content>
-          <span> Email : </span> {{doctorObj.email}} <br>
-        <span> Mobile : </span> {{doctorObj.mobile}} <br>
+          <span> Email: </span> {{doctorObj.email}} <br>
+        <span> Nr Telefoni: </span> {{doctorObj.mobile}} <br>
 
         </mat-card-content>
       </div>
       <div class="col-md-6">
        <mat-card-content>
-        <span> Gender : </span> {{doctorObj.gender}} <br>
-        <span> Department : </span> {{doctorObj.department}}
+        <span> Gjinia: </span> {{doctorObj.gender}} <br>
+        <span> Departamenti: </span> {{doctorObj.department}}
        </mat-card-content>
       </div>
     </div>
@@ -27,9 +33,9 @@
 
 <div class="m-3">
       <!-- Patient table -->
-      <h2 style="font-weight: 700;" class="mt-4" color="primary">Patient Information</h2>
+      <h3 style="font-weight: 700;" class="d-flex justify-content-center mt-4  " color="primary">Lista e Pacientëve</h3>
       <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
+        <mat-label>Filtro</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. code logic" #input>
       </mat-form-field>
 
@@ -55,7 +61,7 @@
           </ng-container>
 
           <ng-container matColumnDef="prescription">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Diagnoza </th>
             <td mat-cell *matCellDef="let row"> {{row?.prescription}} </td>
           </ng-container>
 

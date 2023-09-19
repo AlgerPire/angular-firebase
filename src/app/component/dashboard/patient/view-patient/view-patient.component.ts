@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/shared/service/data.service';
+import * as moment from "moment";
 
 @Component({
   selector: 'app-view-patient',
@@ -10,7 +11,8 @@ import { DataService } from 'src/app/shared/service/data.service';
 export class ViewPatientComponent implements OnInit {
   patient_id !: any;
   patientObj !: any;
-
+  doctorObj !: any;
+  isLoading: boolean = true;
   constructor(
     private route : ActivatedRoute,
     private dataApi : DataService
@@ -25,8 +27,16 @@ export class ViewPatientComponent implements OnInit {
   getPatientById() {
     this.dataApi.getPatientById(this.patient_id).subscribe(res => {
       this.patientObj = res;
-      this.patientObj.admission_date = this.patientObj.admission_date.toDate();
-      console.log(res);
+      this.dataApi.getDoctorById(this.patientObj.doctor_id).subscribe(res => {
+        this.doctorObj = res;
+
+        // this.doctorObj.admission_date = moment().format('DD/MM/Y');
+        console.log("Doctor obj", this.doctorObj);
+        this.patientObj.doctor_name = this.doctorObj.name;
+      })
+      this.patientObj.admission_date = moment().format('DD/MM/Y');
+      console.log("Response" , res);
+      this.isLoading = false;
     })
   }
 }

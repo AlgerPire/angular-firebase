@@ -17,7 +17,14 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. code logic" #input>
   </mat-form-field>
 
-  <div class="mat-elevation-z8">
+  <div class="text-center" *ngIf="isLoading">
+    <button class="btn btn-primary" type="button" disabled >
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      <span role="status"> Loading...</span>
+    </button>
+  </div>
+
+  <div class="mat-elevation-z8" *ngIf="!isLoading">
     <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- Name Column -->
