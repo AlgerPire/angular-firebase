@@ -49,4 +49,13 @@ export class DataService {
   getPatientById(id : any) {
     return this.afs.doc("Patient/"+id).valueChanges();
   }
+
+  addReceipt(receipt : any) {
+    receipt.receipt_id = this.afs.createId();
+    return this.afs.collection("Receipt/").add(receipt);
+  }
+
+  getAllReceipts() {
+    return this.afs.collection("Receipt/").snapshotChanges();
+  }
 }

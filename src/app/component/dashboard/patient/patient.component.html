@@ -12,7 +12,7 @@
   </div>
 
     <!-- Patient table -->
-    <h2 style="font-weight: 700;" class="mt-4" color="primary">Informacion rreth Pacientëve</h2>
+    <h2 style="font-weight: 700;" class="mt-4 d-flex justify-content-center" color="primary">Informacion rreth Pacientëve</h2>
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. code logic" #input>
@@ -82,7 +82,7 @@
 
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          <td class="mat-cell" colspan="4">Asnjë e dhënë që përkon me filtrin: "{{input.value}}"</td>
         </tr>
       </table>
 

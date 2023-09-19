@@ -23,6 +23,7 @@ import { LoginComponent } from './component/auth/login/login.component';
 import { ReceiptComponent } from './component/dashboard/receipt/receipt.component';
 import { ScheduleComponent } from './component/dashboard/schedule/schedule.component';
 import { VisitsComponent } from './component/dashboard/visits/visits.component';
+import { AddReceiptComponent } from './component/dashboard/receipt/add-receipt/add-receipt.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { VisitsComponent } from './component/dashboard/visits/visits.component';
     LoginComponent,
     ReceiptComponent,
     ScheduleComponent,
-    VisitsComponent
+    VisitsComponent,
+    AddReceiptComponent
   ],
   imports: [
     BrowserModule,

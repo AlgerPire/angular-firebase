@@ -1,0 +1,66 @@
+<h2 mat-dialog-tile> {{ title }} </h2>
+<mat-divider></mat-divider>
+<mat-dialog-content [formGroup]="form">
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+      <div>
+        <mat-form-field>
+          <mat-label>Titulli Recetës</mat-label>
+          <input matInput
+                 placeholder="Receta për ..."
+                 formControlName="receipt_title"
+                 required>
+          <mat-error *ngIf="form.get('receipt_title')?.invalid || form.get('receipt_title')?.dirty || form.get('receipt_title')?.touched" >Jepni Titullin e Recetës</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Përshkrimi recetës </mat-label>
+          <input matInput
+                 placeholder="10 vitamina, 2 herë ..."
+                 formControlName="prescription"
+                 required>
+          <mat-error *ngIf="form.get('prescription')?.invalid || form.get('prescription')?.dirty || form.get('prescription')?.touched" >Jepni përshkrimin</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data Regjistrimit</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="registered_date">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('registered_date')?.invalid || form.get('registered_date')?.dirty || form.get('registered_date')?.touched">Zgjidh një datë regjistrimi!</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <mat-label class="me-3">Konsumi (/ditë): </mat-label>
+        <br>
+        <mat-radio-group aria-label="Select a gender" color="primary" formControlName="receipt_consumption">
+          <mat-radio-button value="1 Herë">1 Herë</mat-radio-button>
+          <mat-radio-button value="2 Herë">2 Herë</mat-radio-button>
+          <mat-radio-button value="3 Herë">3 Herë</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field class="mt-4">
+          <mat-label>Doktori</mat-label>
+          <mat-select formControlName="doctor_id" name="doctor_id">
+            <mat-option *ngFor="let doctor of allDoctors" [value]="doctor.doctor_id">
+              {{doctor.doctor_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="mt-4">
+          <mat-label>Pacienti</mat-label>
+          <mat-select formControlName="patient_id" name="patient_id">
+            <mat-option *ngFor="let patient of allPatients" [value]="patient.patient_id">
+              {{patient.patient_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close (click)="cancelRegistration()">Mbyll</button>
+  <button mat-raised-button color="primary" mat-dialog-close (click)="registerReceipt()" [disabled]="form.invalid"> {{buttonName}} </button>
+</div>

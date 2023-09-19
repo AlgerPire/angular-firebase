@@ -42,8 +42,8 @@ export class PatientComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      title : 'Register Patient',
-      buttonName : 'Register'
+      title : 'Regjistro Pacient',
+      buttonName : 'Regjistro'
     }
 
     const dialogRef = this.dialog.open(AddPatientComponent, dialogConfig);

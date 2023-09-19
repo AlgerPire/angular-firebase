@@ -38,12 +38,12 @@
 
       <mat-grid-tile>
         <div>
-          <mat-label class="me-3">Gender : </mat-label>
+          <mat-label class="me-3">Gjinia: </mat-label>
           <br>
           <mat-radio-group aria-label="Select a gender" color="primary" formControlName="gender">
-            <mat-radio-button value="male">Male</mat-radio-button>
-            <mat-radio-button value="female">Female</mat-radio-button>
-            <mat-radio-button value="other">Other</mat-radio-button>
+            <mat-radio-button value="male">Mashkull</mat-radio-button>
+            <mat-radio-button value="female">Femër</mat-radio-button>
+            <mat-radio-button value="other">Tjetër</mat-radio-button>
           </mat-radio-group>
 
           <mat-form-field class="mt-4">
@@ -72,6 +72,6 @@
 </mat-dialog-content>
 
 <div mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close (click)="cancelRegistration()">Cancel</button>
+  <button mat-raised-button mat-dialog-close (click)="cancelRegistration()">Mbyll</button>
   <button mat-raised-button color="primary" mat-dialog-close (click)="registerPatient()" [disabled]="form.invalid"> {{buttonName}} </button>
 </div>
