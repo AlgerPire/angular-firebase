@@ -112,6 +112,7 @@ export class PatientComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
+        console.log("Update patient ", data);
         this.dataApi.updatePatient(data);
         this.openSnackBar("Patient is updated successfully.", "OK")
       }

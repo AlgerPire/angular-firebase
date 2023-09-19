@@ -20,6 +20,7 @@ export class AddReceiptComponent implements OnInit {
   doctor_name !: string;
   patient_id !: string;
   patient_name !: string;
+  receipt_id !: string;
   allDoctors : any[] = [];
   allPatients : any[] = [];
   constructor(@Inject(MAT_DIALOG_DATA) data: any, private dialogRef: MatDialogRef<AddReceiptComponent>,
@@ -34,16 +35,18 @@ export class AddReceiptComponent implements OnInit {
     this.patient_id = data.patient_id;
     this.patient_name = data.patient_name;
     this.registered_date = data.registered_date;
-    console.log("Data ", data);
+    this.receipt_id = data.receipt_id;
+  //  console.log("Data ", data);
   }
 
   ngOnInit(): void {
     this.getAllDoctors();
     this.getAllPatients();
     this.form = this.fb.group({
+      receipt_id: [this.receipt_id, []],
       prescription: [this.prescription, [Validators.required]],
       receipt_title: [this.receipt_title, [Validators.required]],
-      receipt_consumption: [this.receipt_title, [Validators.required]],
+      receipt_consumption: [this.receipt_consumption, [Validators.required]],
       doctor_id : [this.doctor_id, [Validators.required]],
       patient_id : [this.patient_id, [Validators.required]],
       doctor_name : [this.doctor_id, []],
@@ -78,7 +81,7 @@ export class AddReceiptComponent implements OnInit {
     this.dataApi.getAllPatients().subscribe(res => {
       this.allPatients = res.map((e : any) => {
         const data = e.payload.doc.data();
-        console.log("All patients ", data);
+      //  console.log("All patients ", data);
         const patient = {
           patient_name : data.patient_name,
           patient_id : data.patient_id,

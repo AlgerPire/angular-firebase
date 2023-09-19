@@ -64,7 +64,7 @@ export class ReceiptComponent implements OnInit {
     this.dataApi.getAllReceipts().subscribe(res => {
       this.allReceipts = res.map((e:any) => {
         const data = e.payload.doc.data();
-        console.log("data ", data);
+       // console.log("data ", data);
         data.receipt_id = e.payload.doc.id;
         return data;
       })
@@ -74,20 +74,6 @@ export class ReceiptComponent implements OnInit {
       this.dataSource.sort = this.sort;
     })
   }
-
-  // getAllPatients() {
-  //   this.dataApi.getAllPatients().subscribe(res => {
-  //     this.allPatients = res.map((e:any) => {
-  //       const data = e.payload.doc.data();
-  //       data.patient_id = e.payload.doc.id;
-  //       return data;
-  //     })
-  //     this.isLoading = false;
-  //     this.dataSource = new MatTableDataSource(this.allPatients);
-  //     this.dataSource.paginator = this.paginator;
-  //     this.dataSource.sort = this.sort;
-  //   })
-  // }
 
   getAllDoctors() {
     this.dataApi.getAllDoctors().subscribe(res => {
@@ -131,26 +117,28 @@ export class ReceiptComponent implements OnInit {
     window.open('/dashboard/patient/'+row.patient_id,'_blank');
   }
 
-  editPatient(row : any) {
-    if(row.patient_id == null || row.patient_name == null) {
-      return;
-    }
+  editReceipt(row : any) {
+   // console.log("Got here ", row);
+    // if(row.patient_id == null || row.patient_name == null) {
+    //   return;
+    // }
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = row;
-    dialogConfig.data.title = "Edit patient";
-    dialogConfig.data.buttonName = "Update";
-    dialogConfig.data.admission_date = row.admission_date.toDate();
+    dialogConfig.data.title = "Modifiko Recetën";
+    dialogConfig.data.buttonName = "Modifiko";
+    dialogConfig.data.registered_date = row.registered_date.toDate();
 
     console.log(dialogConfig.data);
 
-    const dialogRef = this.dialog.open(AddPatientComponent, dialogConfig);
+    const dialogRef = this.dialog.open(AddReceiptComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
-        this.dataApi.updatePatient(data);
-        this.openSnackBar("Patient is updated successfully.", "OK")
+        console.log("data ", data);
+        this.dataApi.updateReceipt(data);
+        this.openSnackBar("Receta u modifikua me sukses.", "OK")
       }
     })
   }

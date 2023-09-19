@@ -58,4 +58,7 @@ export class DataService {
   getAllReceipts() {
     return this.afs.collection("Receipt/").snapshotChanges();
   }
+  updateReceipt(receipt : any) {
+    return this.afs.doc("Receipt/"+receipt.receipt_id).update(receipt);
+  }
 }
