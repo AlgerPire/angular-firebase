@@ -9,6 +9,7 @@ import { AuthguardGuard } from './shared/guard/authguard.guard';
 import {ReceiptComponent} from "./component/dashboard/receipt/receipt.component";
 import {ScheduleComponent} from "./component/dashboard/schedule/schedule.component";
 import {VisitsComponent} from "./component/dashboard/visits/visits.component";
+import {ViewReceiptComponent} from "./component/dashboard/receipt/view-receipt/view-receipt.component";
 
 const routes: Routes = [
   {path : '', redirectTo : 'login', pathMatch : 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path : 'visits', component: VisitsComponent},
     {path : 'doctor/:id', component: ViewDoctorComponent},
     {path : 'patient/:id', component: ViewPatientComponent},
+    {path : 'receipt/:id', component: ViewReceiptComponent},
   ], canActivate: [AuthguardGuard]},
   {path : 'login', component : LoginComponent}
 ];

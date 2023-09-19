@@ -11,6 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {AddPatientComponent} from "../patient/add-patient/add-patient.component";
 import {DeletePatientComponent} from "../patient/delete-patient/delete-patient.component";
 import {AddReceiptComponent} from "./add-receipt/add-receipt.component";
+import {DeleteReceiptComponent} from "./delete-receipt/delete-receipt.component";
 
 @Component({
   selector: 'app-receipt',
@@ -113,8 +114,8 @@ export class ReceiptComponent implements OnInit {
     return patientName;
   }
 
-  viewPatient(row : any) {
-    window.open('/dashboard/patient/'+row.patient_id,'_blank');
+  viewReceipt(row : any) {
+    window.open('/dashboard/receipt/'+row.receipt_id,'_blank');
   }
 
   editReceipt(row : any) {
@@ -143,22 +144,22 @@ export class ReceiptComponent implements OnInit {
     })
   }
 
-  deletePatient(row : any) {
+  deleteReceipt(row : any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      title : 'Delete patient',
-      patientName : row.patient_name
+      title : 'Fshije recetën',
+      receiptTitle : row.receipt_title
     }
 
-    const dialogRef = this.dialog.open(DeletePatientComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DeleteReceiptComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
         console.log(row);
-        this.dataApi.deletePatient(row.patient_id);
-        this.openSnackBar("Patient deleted successfully.", "OK")
+        this.dataApi.deleteReceipt(row.receipt_id);
+        this.openSnackBar("Receta u fshi me sukses.", "OK")
       }
     })
   }

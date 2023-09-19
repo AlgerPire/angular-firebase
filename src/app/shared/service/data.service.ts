@@ -61,4 +61,10 @@ export class DataService {
   updateReceipt(receipt : any) {
     return this.afs.doc("Receipt/"+receipt.receipt_id).update(receipt);
   }
+  deleteReceipt(id : string) {
+    return this.afs.doc("Receipt/"+id).delete();
+  }
+  getReceiptById(id : any) {
+    return this.afs.doc("Receipt/"+id).valueChanges();
+  }
 }

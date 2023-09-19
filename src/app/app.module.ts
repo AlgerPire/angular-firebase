@@ -24,6 +24,8 @@ import { ReceiptComponent } from './component/dashboard/receipt/receipt.componen
 import { ScheduleComponent } from './component/dashboard/schedule/schedule.component';
 import { VisitsComponent } from './component/dashboard/visits/visits.component';
 import { AddReceiptComponent } from './component/dashboard/receipt/add-receipt/add-receipt.component';
+import { DeleteReceiptComponent } from './component/dashboard/receipt/delete-receipt/delete-receipt.component';
+import { ViewReceiptComponent } from './component/dashboard/receipt/view-receipt/view-receipt.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { AddReceiptComponent } from './component/dashboard/receipt/add-receipt/a
     ReceiptComponent,
     ScheduleComponent,
     VisitsComponent,
-    AddReceiptComponent
+    AddReceiptComponent,
+    DeleteReceiptComponent,
+    ViewReceiptComponent
   ],
   imports: [
     BrowserModule,
