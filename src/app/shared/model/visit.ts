@@ -1,9 +1,8 @@
-export interface Receipt {
-  receipt_id : string;
-  receipt_title: string;
+export interface Visit {
+  visit_id : string;
+  visit_title: string;
   prescription  : string;
-  receipt_price: string;
-  receipt_consumption: string;
+  visit_price: string;
   doctor_id : string;
   doctor_name : string;
   patient_id :string;

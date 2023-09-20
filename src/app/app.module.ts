@@ -21,7 +21,6 @@ import { DeletePatientComponent } from './component/dashboard/patient/delete-pat
 import { ViewPatientComponent } from './component/dashboard/patient/view-patient/view-patient.component';
 import { LoginComponent } from './component/auth/login/login.component';
 import { ReceiptComponent } from './component/dashboard/receipt/receipt.component';
-import { VisitsComponent } from './component/dashboard/visits/visits.component';
 import { AddReceiptComponent } from './component/dashboard/receipt/add-receipt/add-receipt.component';
 import { DeleteReceiptComponent } from './component/dashboard/receipt/delete-receipt/delete-receipt.component';
 import { ViewReceiptComponent } from './component/dashboard/receipt/view-receipt/view-receipt.component';
@@ -40,10 +39,9 @@ import { ViewReceiptComponent } from './component/dashboard/receipt/view-receipt
     ViewPatientComponent,
     LoginComponent,
     ReceiptComponent,
-    VisitsComponent,
     AddReceiptComponent,
     DeleteReceiptComponent,
-    ViewReceiptComponent
+    ViewReceiptComponent,
   ],
   imports: [
     BrowserModule,
