@@ -81,7 +81,7 @@ export class DataService {
     return this.afs.collection("Visit/").add(visit);
   }
 
-  getAllVisits() {
+  getAllVisit() {
     return this.afs.collection("Visit/").snapshotChanges();
   }
 
