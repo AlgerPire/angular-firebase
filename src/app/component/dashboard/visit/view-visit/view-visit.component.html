@@ -1,0 +1,31 @@
+<h2 style="font-weight: 700;" class=" d-flex mt-3 justify-content-center" color="primary">Informacione rreth
+  Vizitës</h2>
+<div class="text-center" *ngIf="isLoading">
+  <button class="btn btn-primary" type="button" disabled>
+    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    <span role="status"> Loading...</span>
+  </button>
+</div>
+<mat-card class="m-3" *ngIf="!isLoading">
+  <mat-card-title class="pb-2">
+    Titulli i vizitës: <b>{{visitObj?.visit_title}}</b>
+  </mat-card-title>
+  <mat-divider></mat-divider>
+
+  <div class="row pt-3">
+    <div class="col-md-6">
+      <mat-card-content>
+        <span><b>Doktori</b>:</span> {{doctorObj.name}} <br>
+        <span><b>Pacienti</b>:</span> {{patientObj.patient_name}}  <br>
+        <span><b>Diagnoza e Pacientit:</b></span> {{patientObj.prescription}}  <br>
+      </mat-card-content>
+    </div>
+    <div class="col-md-6">
+      <mat-card-content>
+        <span> Përshkrimi i vizitës: </span> {{visitObj.prescription}} <br>
+        <span> Çmimi i vizitës: </span> {{visitObj.visit_price}}<br>
+        <span> Data e vizitës: </span> {{visitObj.registered_date.toDate() | date: 'dd-MM-yyyy'}}
+      </mat-card-content>
+    </div>
+  </div>
+</mat-card>

@@ -26,22 +26,6 @@ export class ViewReceiptComponent implements OnInit {
     this.getReceiptById();
   }
 
-  // getPatientById() {
-  //   this.dataApi.getPatientById(this.patient_id).subscribe(res => {
-  //     this.patientObj = res;
-  //     this.dataApi.getDoctorById(this.patientObj.doctor_id).subscribe(res => {
-  //       this.doctorObj = res;
-  //
-  //       // this.doctorObj.admission_date = moment().format('DD/MM/Y');
-  //       console.log("Doctor obj", this.doctorObj);
-  //       this.patientObj.doctor_name = this.doctorObj.name;
-  //     })
-  //     this.patientObj.admission_date = moment().format('DD/MM/Y');
-  //     console.log("Response" , res);
-  //     this.isLoading = false;
-  //   })
-  // }
-
   getReceiptById() {
     this.dataApi.getReceiptById(this.receipt_id).subscribe(res => {
       this.receiptObj = res;

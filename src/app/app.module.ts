@@ -24,6 +24,10 @@ import { ReceiptComponent } from './component/dashboard/receipt/receipt.componen
 import { AddReceiptComponent } from './component/dashboard/receipt/add-receipt/add-receipt.component';
 import { DeleteReceiptComponent } from './component/dashboard/receipt/delete-receipt/delete-receipt.component';
 import { ViewReceiptComponent } from './component/dashboard/receipt/view-receipt/view-receipt.component';
+import { VisitComponent } from './component/dashboard/visit/visit.component';
+import { AddVisitComponent } from './component/dashboard/visit/add-visit/add-visit.component';
+import { ViewVisitComponent } from './component/dashboard/visit/view-visit/view-visit.component';
+import { DeleteVisitComponent } from './component/dashboard/visit/delete-visit/delete-visit.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { ViewReceiptComponent } from './component/dashboard/receipt/view-receipt
     AddReceiptComponent,
     DeleteReceiptComponent,
     ViewReceiptComponent,
+    VisitComponent,
+    AddVisitComponent,
+    ViewVisitComponent,
+    DeleteVisitComponent,
   ],
   imports: [
     BrowserModule,

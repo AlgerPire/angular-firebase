@@ -8,6 +8,8 @@ import { ViewPatientComponent } from './component/dashboard/patient/view-patient
 import { AuthguardGuard } from './shared/guard/authguard.guard';
 import {ReceiptComponent} from "./component/dashboard/receipt/receipt.component";
 import {ViewReceiptComponent} from "./component/dashboard/receipt/view-receipt/view-receipt.component";
+import {VisitComponent} from "./component/dashboard/visit/visit.component";
+import {ViewVisitComponent} from "./component/dashboard/visit/view-visit/view-visit.component";
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
     {path : 'patient', component: PatientComponent},
     {path : 'doctor', component: DoctorComponent},
     {path : 'receipt', component: ReceiptComponent},
+    {path : 'visit', component: VisitComponent},
+    {path : 'visit/:id', component: ViewVisitComponent},
     {path : 'doctor/:id', component: ViewDoctorComponent},
     {path : 'patient/:id', component: ViewPatientComponent},
     {path : 'receipt/:id', component: ViewReceiptComponent},

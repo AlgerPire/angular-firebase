@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+  <p>Jeni i sigurt që dëshironi të fshini vizitën: <b>{{visitTitle}}</b> ? </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="close()">JO</button>
+  <button mat-raised-button color="accent"  (click)="delete()">Fshije</button>
+</div>
