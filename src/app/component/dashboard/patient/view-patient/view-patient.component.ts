@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DataService } from 'src/app/shared/service/data.service';
-import * as moment from "moment";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {DataService} from 'src/app/shared/service/data.service';
 
 @Component({
   selector: 'app-view-patient',
@@ -12,10 +11,13 @@ export class ViewPatientComponent implements OnInit {
   patient_id !: any;
   patientObj !: any;
   doctorObj !: any;
+  visitObj !: any;
+  receiptObj !: any;
   isLoading: boolean = true;
+
   constructor(
-    private route : ActivatedRoute,
-    private dataApi : DataService
+    private route: ActivatedRoute,
+    private dataApi: DataService
   ) {
     this.patient_id = route.snapshot.paramMap.get('id');
   }
@@ -31,11 +33,26 @@ export class ViewPatientComponent implements OnInit {
         this.doctorObj = res;
 
         // this.doctorObj.admission_date = moment().format('DD/MM/Y');
-        console.log("Doctor obj", this.doctorObj);
+        // console.log("Doctor obj", this.doctorObj);
         this.patientObj.doctor_name = this.doctorObj.name;
       })
-      this.patientObj.admission_date = moment().format('DD/MM/Y');
-      console.log("Response" , res);
+      this.dataApi.getAllVisit().subscribe(res => {
+        this.visitObj = res.map((e : any) => {
+          const data = e.payload.doc.data();
+          data.id = e.payload.doc.id;
+          if(this.patientObj.patient_id == data.patient_id){
+            return data;
+          }
+        })
+      })
+      this.dataApi.getAllReceipts().subscribe(res => {
+        this.receiptObj = res.map((e : any) => {
+          const data = e.payload.doc.data();
+          if(this.patientObj.patient_id == data.patient_id) {
+            return data;
+          }
+        })
+      })
       this.isLoading = false;
     })
   }

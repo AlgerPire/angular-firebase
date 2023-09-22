@@ -22,8 +22,59 @@
       <div class="col-md-6">
        <mat-card-content>
         <span> Gjinia: </span> {{patientObj.gender}} <br>
-        <span> Data Regjistrimit: </span> {{patientObj.admission_date}}
+        <span> Data Regjistrimit: </span> {{patientObj.admission_date.toDate() | date: 'dd-MM-yyyy'}}
        </mat-card-content>
       </div>
     </div>
 </mat-card>
+
+<div class="mt-5 m-3" *ngIf="!isLoading">
+  <!-- Patient table -->
+  <h3 style="font-weight: 700;" class="d-flex justify-content-center mt-4 text-primary " color="primary">Të gjitha vizitat e pacientit</h3>
+  <table class="table table-light mt-2">
+    <thead>
+    <tr>
+      <th scope="col">Data e Vizitës</th>
+      <th scope="col">Emërtimi</th>
+      <th scope="col">Përshkrimi i vizitës</th>
+      <th scope="col">Çmimi i vizitës</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let visit of visitObj">
+      <tr *ngIf="visit !== undefined">
+      <th scope="row">{{visit.registered_date.toDate() | date: 'dd-MM-yyyy'}}</th>
+      <td>{{visit.visit_title}}</td>
+      <td>{{visit.prescription}}</td>
+      <td>{{visit.visit_price}}</td>
+    </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-5 m-3" *ngIf="!isLoading">
+  <!-- Patient table -->
+  <h3 style="font-weight: 700;" class="d-flex justify-content-center mt-4  text-primary" >Recetat e pacientit</h3>
+  <table class="table table-light mt-2">
+    <thead>
+    <tr>
+      <th scope="col">Data e Recetës</th>
+      <th scope="col">Titulli</th>
+      <th scope="col">Përshkrimi i recetës</th>
+      <th scope="col">Konsumimi</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let receipt of receiptObj">
+      <tr *ngIf="receipt !== undefined">
+        <th scope="row">{{ receipt.registered_date.toDate() | date: 'dd-MM-yyyy' }}</th>
+        <td>{{ receipt.receipt_title }}</td>
+        <td>{{ receipt.prescription }}</td>
+        <td>{{ receipt.receipt_consumption }} /ditë</td>
+      </tr>
+    </ng-container>
+
+    </tbody>
+  </table>
+</div>

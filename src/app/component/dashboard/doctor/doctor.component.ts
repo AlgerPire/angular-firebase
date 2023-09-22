@@ -17,7 +17,7 @@ import { DeleteDoctorComponent } from './delete-doctor/delete-doctor.component';
 export class DoctorComponent implements OnInit {
 
   doctorsArr : any[] = [];
-  displayedColumns: string[] = ['name', 'mobile', 'email', 'department', 'gender','action'];
+  displayedColumns: string[] = ['name', 'mobile', 'email', 'department', 'qualification', 'gender','action'];
   dataSource!: MatTableDataSource<Doctor>;
   isLoading: boolean = true;
 
