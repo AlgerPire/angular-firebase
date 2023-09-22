@@ -19,7 +19,7 @@ export class PatientComponent implements OnInit {
 
   allPatients : Patient[] = [];
   allDoctors : Doctor[] = [];
-  displayedColumns: string[] = ['name', 'mobile', 'doctor', 'gender','action'];
+  displayedColumns: string[] = ['name',  'diagnose', 'mobile', 'doctor', 'gender','action'];
   dataSource!: MatTableDataSource<Patient>;
   isLoading: boolean = true;
 
@@ -51,7 +51,7 @@ export class PatientComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
         this.dataApi.addPatient(data);
-        this.openSnackBar("Registration of patient is successful.", "OK")
+        this.openSnackBar("Pacienti u regjistrua me sukses.", "OK")
       }
     })
   }
@@ -102,9 +102,13 @@ export class PatientComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = row;
-    dialogConfig.data.title = "Edit patient";
-    dialogConfig.data.buttonName = "Update";
-    dialogConfig.data.admission_date = row.admission_date.toDate();
+    dialogConfig.data.title = "Modifiko pacientin";
+    dialogConfig.data.buttonName = "Modifiko";
+    if (row.admission_date instanceof Date) {
+      dialogConfig.data.admission_date = row.admission_date;
+    } else if (row.admission_date && row.admission_date.toDate instanceof Function) {
+      dialogConfig.data.admission_date = row.admission_date.toDate();
+    }
 
     console.log(dialogConfig.data);
 
@@ -124,7 +128,7 @@ export class PatientComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      title : 'Delete patient',
+      title : 'Fshij pacientin',
       patientName : row.patient_name
     }
 
@@ -134,7 +138,7 @@ export class PatientComponent implements OnInit {
       if(data) {
         console.log(row);
         this.dataApi.deletePatient(row.patient_id);
-        this.openSnackBar("Patient deleted successfully.", "OK")
+        this.openSnackBar("Pacienti u fshi me sukses", "OK")
       }
     })
   }

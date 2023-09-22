@@ -48,7 +48,7 @@ export class DoctorComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
         this.dataApi.addDoctor(data);
-        this.openSnackBar("Registration of doctor is successful.", "OK")
+        this.openSnackBar("Doktori u regjistrua me sukses!", "OK")
       }
     })
   }
@@ -61,16 +61,21 @@ export class DoctorComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = row;
-    dialogConfig.data.title = "Edit doctor";
-    dialogConfig.data.buttonName = "Update";
-    dialogConfig.data.birthdate = row.birthdate.toDate();
+    dialogConfig.data.title = "Modifiko doktorin";
+    dialogConfig.data.buttonName = "Modifiko";
+    if (row.birthdate instanceof Date) {
+      dialogConfig.data.birthdate = row.birthdate;
+    } else if (row.birthdate && row.birthdate.toDate instanceof Function) {
+      dialogConfig.data.birthdate = row.birthdate.toDate();
+    }
+    // dialogConfig.data.birthdate = row.birthdate.toDate();
 
     const dialogRef = this.dialog.open(AddDoctorComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
         this.dataApi.updateDoctor(data);
-        this.openSnackBar("Doctor is updated successfully.", "OK")
+        this.openSnackBar("Doktori është modifikuar me sukses!", "OK")
       }
     })
   }
@@ -80,7 +85,7 @@ export class DoctorComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      title : 'Delete doctor',
+      title : 'Fshije doktorin',
       doctorName : row.name
     }
 
@@ -89,7 +94,7 @@ export class DoctorComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
         this.dataApi.deleteDoctor(row.id);
-        this.openSnackBar("Doctor deleted successfully.", "OK")
+        this.openSnackBar("Doktori u fshi me sukses!", "OK")
       }
     })
   }

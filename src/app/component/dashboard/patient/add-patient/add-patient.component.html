@@ -8,30 +8,30 @@
       <mat-grid-tile>
         <div>
           <mat-form-field>
-            <mat-label>Full name</mat-label>
+            <mat-label>Emri</mat-label>
             <input matInput
-                    placeholder="Ex. code logic"
+                    placeholder="Sh. Altin Gjoka"
                     formControlName="patient_name"
                     required>
-            <mat-error *ngIf="form.get('patient_name')?.invalid || form.get('patient_name')?.dirty || form.get('patient_name')?.touched">Enter full name</mat-error>
+            <mat-error *ngIf="form.get('patient_name')?.invalid || form.get('patient_name')?.dirty || form.get('patient_name')?.touched">Vendosni një emër</mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Mobile number : </mat-label>
+            <mat-label>Nr. Telefonit: </mat-label>
             <input matInput
-                    placeholder="9865452152"
+                    placeholder="0681234567"
                     formControlName="mobile"
                     required>
-            <mat-error *ngIf="form.get('mobile')?.invalid || form.get('mobile')?.dirty || form.get('mobile')?.touched">Enter valid mobile number</mat-error>
+            <mat-error *ngIf="form.get('mobile')?.invalid || form.get('mobile')?.dirty || form.get('mobile')?.touched">Jepni një nr të saktë telefoni</mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Prescription</mat-label>
+            <mat-label>Shqetësimi</mat-label>
             <input matInput
-                    placeholder="ex. medicines"
+                    placeholder="Dhimbje shpine"
                     formControlName="prescription"
                     required>
-            <mat-error *ngIf="form.get('prescription')?.invalid || form.get('prescription')?.dirty || form.get('prescription')?.touched">Enter valid prescription </mat-error>
+            <mat-error *ngIf="form.get('prescription')?.invalid || form.get('prescription')?.dirty || form.get('prescription')?.touched">Plotësoni fushën </mat-error>
           </mat-form-field>
         </div>
       </mat-grid-tile>
@@ -43,7 +43,6 @@
           <mat-radio-group aria-label="Select a gender" color="primary" formControlName="gender">
             <mat-radio-button value="male">Mashkull</mat-radio-button>
             <mat-radio-button value="female">Femër</mat-radio-button>
-            <mat-radio-button value="other">Tjetër</mat-radio-button>
           </mat-radio-group>
 
           <mat-form-field class="mt-4">

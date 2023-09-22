@@ -129,7 +129,12 @@ export class ReceiptComponent implements OnInit {
     dialogConfig.data = row;
     dialogConfig.data.title = "Modifiko Recetën";
     dialogConfig.data.buttonName = "Modifiko";
-    dialogConfig.data.registered_date = row.registered_date.toDate();
+    // dialogConfig.data.registered_date = row.registered_date.toDate();
+    if (row.registered_date instanceof Date) {
+      dialogConfig.data.registered_date = row.registered_date;
+    } else if (row.registered_date && row.registered_date.toDate instanceof Function) {
+      dialogConfig.data.registered_date = row.registered_date.toDate();
+    }
 
     console.log(dialogConfig.data);
 
